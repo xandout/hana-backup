@@ -70,29 +70,4 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// defer rows.Close()
-	// colNames, err := rows.Columns()
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// cols := make([]interface{}, len(colNames))
-	// colPtrs := make([]interface{}, len(colNames))
-	// for i := 0; i < len(colNames); i++ {
-	// 	colPtrs[i] = &cols[i]
-	// }
-	// for rows.Next() {
-	// 	var myMap = make(map[string]interface{})
-
-	// 	err = rows.Scan(colPtrs...)
-	// 	if err != nil {
-	// 		log.Fatal(err)
-	// 	}
-	// 	for i, col := range cols {
-	// 		myMap[colNames[i]] = col
-	// 	}
-	// 	// Do something with the map
-	// 	for key, val := range myMap {
-	// 		fmt.Println("Key:", key, "Value Type:", reflect.TypeOf(val))
-	// 	}
-	// }
 }
