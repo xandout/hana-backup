@@ -139,7 +139,7 @@ func uploadBackups(backuplocation string, backupname string) {
 			Body:        fileBytes,
 			ContentType: aws.String(fileType),
 		})
-		fmt.Printf("UploadId: %s\n", upload.UploadID)
+		fmt.Printf("Upload URL: %s\n", upload.Location)
 	}
 
 }
