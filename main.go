@@ -139,6 +139,9 @@ func uploadBackups(backuplocation string, backupname string) {
 			Body:        fileBytes,
 			ContentType: aws.String(fileType),
 		})
+		if err != nil {
+			log.Fatal(err)
+		}
 		fmt.Printf("Upload URL: %s\n", upload.Location)
 	}
 
