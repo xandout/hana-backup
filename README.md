@@ -1,4 +1,4 @@
-### hana-backup
+# hana-backup
 
 This utility will perform a backup of an SAP HANA database and then copy the files off to Amazon S3.
 
@@ -26,7 +26,7 @@ location=<LOCAL BACKUP LOCATION>
 prefix=<BACKUP PREFIX>
 ```
 
-## Output
+### Output
 This utility will connect to the defined HANA instance and perform a backup with the following name:
 
 `<PREFIX>-YYYY-M-D_H.M`
@@ -50,5 +50,5 @@ Upload URL: https://SuperGreatApp-backups.s3.amazonaws.com/backups%2FSuperGreatA
 ```
 
 
-# Optional Flags
+### Optional Flags
 `-remove` Remove local files after backup
