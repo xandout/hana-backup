@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"database/sql"
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -27,8 +28,13 @@ const (
 var iniLocation string
 var backupLocation string
 var backupPrefix string
+var deleteLocal *bool
 
 func main() {
+
+	// Toggle deletion of backups on disk
+	deleteLocal = flag.Bool("remove", false, "Remove local files after upload")
+	flag.Parse()
 	currentUser, _ := user.Current()
 	iniLocation = fmt.Sprintf("%s/.hdbsql", currentUser.HomeDir)
 	ini := goini.New()
@@ -92,6 +98,16 @@ func main() {
 	}
 
 	uploadBackups(backupLocation, backupname)
+
+	if *deleteLocal {
+		toRemove := fmt.Sprintf("%s%s*", backupLocation, backupname)
+
+		files, _ := filepath.Glob(toRemove)
+
+		for _, file := range files {
+			os.Remove(file)
+		}
+	}
 }
 
 func uploadBackups(backuplocation string, backupname string) {
